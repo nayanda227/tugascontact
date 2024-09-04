@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+h2 {
+    color: #333333;
+    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
