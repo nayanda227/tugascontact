@@ -1,3 +1,19 @@
+    <?php
+    include('../koneksi/koneksi.php');
+    session_start();
+
+    // Search functionality
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+    $sql = "SELECT * FROM contact WHERE 
+            name LIKE '%$search%' OR 
+            nim LIKE '%$search%' OR 
+            email LIKE '%$search%' OR 
+            class LIKE '%$search%' OR 
+            gender LIKE '%$search%' OR 
+            suggestion LIKE '%$search%'";
+    $result = $conn->query($sql);
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
