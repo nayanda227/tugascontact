@@ -6,6 +6,15 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
         <title>Contact Form</title>
         <link rel="stylesheet" href="styles.css">
+        <script>
+            function confirmSubmission(event) {
+                event.preventDefault(); // Mencegah form langsung terkirim
+                let confirmation = confirm("Are you sure you want to submit the form?");
+                if (confirmation) {
+                    document.getElementById("contactForm").submit(); // Kirim form jika pengguna mengonfirmasi
+                }
+            }
+        </script>
     </head>
     <body>
         <div class="container">
