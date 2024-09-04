@@ -1,3 +1,36 @@
+<?php
+include('../koneksi/koneksi.php');
+session_start();
+
+// Cek apakah form telah disubmit
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+
+    // Prepare dan bind
+    $stmt = $conn->prepare("SELECT id, password FROM admin_users WHERE username = ?");
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($id, $hashed_password);
+
+    if ($stmt->num_rows == 1) {
+        $stmt->fetch();
+        if (password_verify($pass, $hashed_password)) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['userid'] = $id;
+            header("Location: admin.php");
+            exit;
+        }
+    }
+    
+    // Pesan error umum
+    $error = "Invalid username or password";
+    
+    $stmt->close();
+    $conn->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
